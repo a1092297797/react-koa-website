@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> 
+</head>
+<body>
+	<div id="container">
+		
+	</div>
+	<button id="btn">btn</button>
+  <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+  <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script>
+
+    var rendererMD = new marked.Renderer();
+    marked.setOptions({
+      renderer: rendererMD,
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false
+    });
+    
+    marked.setOptions({
+      highlight: function (code) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+
+
+
+    document.getElementById('btn').addEventListener('click',function(){
+     var xhr = new XMLHttpRequest();
+     xhr.open('get', 'http://localhost:8080/article?id=123');
+     xhr.send();
+     xhr.onreadystatechange = function(){
+      if (xhr.status>=200&&xhr.status<300&&xhr.readyState==4) {
+       document.getElementById('container').innerHTML = marked(xhr.responseText);
+     }
+   }
+ })
+
+</script>
+</body>
+</html>
