@@ -7,6 +7,9 @@ const app = new Koa();
 // 解析请求体
 app.use(bodyParser());
 
+// 配置静态web服务的中间件
+const static = require('koa-static');
+app.use(static('../web/build'));
 
 // 引入路由分发
 const router = require('./routes')
@@ -20,7 +23,7 @@ app.use(async ctx =>{
   if(ctx.body == undefined){
     //console.log(ctx.body)
     ctx.type='html';
-    ctx.body = fs.readFileSync('../web/dist/index.html');
+    ctx.body = fs.readFileSync('../web/build/index.html');
   }
 });
 
