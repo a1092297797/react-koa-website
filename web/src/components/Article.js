@@ -57,13 +57,13 @@ class About extends Component {
   render() {
   	let article;
     if(this.state.isloading){
-        article = <Spin />
+      article = <Spin />
     }else if(this.state.status){
-  		 article= (<article>
-          <nav><h2>{this.state.data.title}</h2><span>发表于{moment(this.state.data.createdate).fromNow()+' '+moment().format('l')}</span></nav>
+  		 article = (<article className='content-text'>
+          <nav><h2>{this.state.data.title}</h2><span>发表于{moment(this.state.data.createdate).fromNow()+' '+moment(this.state.data.createdate).format('l')}</span></nav>
           <Divider type="horizontal" />
           <div className='sumary'>{this.state.data.sumary}</div>    
-        	<div dangerouslySetInnerHTML={this.createMarkup(marked(this.state.data.content))}></div>
+        	<div dangerouslySetInnerHTML={this.createMarkup(marked(this.state.data.content))} ></div>
         </article>);
   	}else{
   		article = <p>文章不存在或者已被删除</p>

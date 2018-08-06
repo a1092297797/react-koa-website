@@ -2,12 +2,19 @@
 	background-color: #efefef;
 	padding: 20px 50px;
 	margin-bottom: 30px;
+
 }
 
 .language-javascript,.language-html,.language-css,.language-bash,.language-java{
-	color: red;
+	color:black;
 	opacity:.5;
+
 }
+
+.content-text pre{
+	background-color: #f6f8fa;
+}
+
 
 blockquote{
 	color: blue;
