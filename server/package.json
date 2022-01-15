@@ -17,7 +17,7 @@
         "koa-router": "^7.4.0",
         "koa-static": "^5.0.0",
         "lodash": "^4.17.4",
-        "marked": "^0.4.0",
+        "marked": "^4.0.10",
         "mkdir-p": "0.0.7",
         "mysql": "^2.16.0",
         "pify": "^2.3.0",
